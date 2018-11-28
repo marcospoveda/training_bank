@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ClienteResourceAssembler extends ResourceAssemblerSupport<Cliente, ClienteResource> {
 
-    private static final String CUSTOMER_SELF = "/clientes/{idCliente}";
-    private static final String CUSTOMER_REL = "/clientes/{idCliente}";
+    //private static final String CUSTOMER_SELF = "/clientes/{idCliente}";
+    //private static final String CUSTOMER_REL = "/clientes/{idCliente}";
     //private static final String CONTA_SELF = "/clientes/{idCliente}/contas";
 
     @Autowired
@@ -36,6 +36,7 @@ public class ClienteResourceAssembler extends ResourceAssemblerSupport<Cliente, 
         resource.setTelefone(cliente.getTelefone());
 
         resource.add(ClienteLink.buildUsing(cliente.getIdCliente()));
+        resource.add(ContaLink.buildUsing(cliente.getIdCliente()).withRel("has-account"));
 
         return resource;
     }

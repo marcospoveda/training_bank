@@ -15,7 +15,8 @@ import org.springframework.hateoas.core.Relation;
         "endereco",
         "telefone",
         "email",
-        "_links"
+        "_links",
+        "_has-account"
 })
 @Relation(collectionRelation = "clientes")
 @JsonInclude(JsonInclude.Include.NON_NULL)
