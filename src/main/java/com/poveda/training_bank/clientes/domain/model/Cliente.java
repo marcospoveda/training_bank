@@ -1,7 +1,7 @@
 package com.poveda.training_bank.clientes.domain.model;
 
 public class Cliente {
-    private Long id;
+    private Long idCliente;
     private String nome;
     private String rg;
     private Long cpf;
@@ -10,12 +10,20 @@ public class Cliente {
     private String email;
     private Conta conta;
 
-    public Long getId() {
-        return id;
+    public Conta getConta() {
+        return conta;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setConta(Conta conta) {
+        this.conta = conta;
+    }
+
+    public Long getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNome() {
@@ -66,11 +74,4 @@ public class Cliente {
         this.email = email;
     }
 
-    public Conta getConta() {
-        return conta;
-    }
-
-    public void setConta(Conta conta) {
-        this.conta = conta;
-    }
 }

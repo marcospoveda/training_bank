@@ -1,17 +1,27 @@
 package com.poveda.training_bank.clientes.domain.model;
 
 public class Conta {
-    private Long id;
+    private Long idConta;
+    private Long numero;
+    private Long agencia;
     private Long saldo;
     private TipoConta tipoConta;
     private TipoPlano tipoPlano;
 
-    public Long getId() {
-        return id;
+    public Long getIdConta() {
+        return idConta;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdConta(Long idConta) {
+        this.idConta = idConta;
+    }
+
+    public Long getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Long agencia) {
+        this.agencia = agencia;
     }
 
     public TipoConta getTipoConta() {
@@ -37,4 +47,13 @@ public class Conta {
     public void setTipoPlano(TipoPlano tipoPlano) {
         this.tipoPlano = tipoPlano;
     }
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
+
 }

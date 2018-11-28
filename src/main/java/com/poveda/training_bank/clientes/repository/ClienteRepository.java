@@ -1,6 +1,8 @@
 package com.poveda.training_bank.clientes.repository;
 
 import com.poveda.training_bank.clientes.domain.model.Cliente;
+import com.poveda.training_bank.clientes.view.support.ClienteResource;
+import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -16,16 +18,16 @@ public class ClienteRepository {
         clientes.add(cliente);
     }
 
-    public Cliente findByNome(String nome) {
+    /*public Cliente findByNome(String nome) {
         for(Cliente cliente : clientes){
             if(cliente.getNome().equals(nome)){
                 return cliente;
             }
         }
         return null;
-    }
+    }*/
 
-    public void delete(String nome) {
+   public void delete(String nome) {
         Iterator <Cliente> iterator = clientes.iterator();
         while(iterator.hasNext()){
             if(iterator.next().getNome().equals(nome)){
@@ -36,11 +38,21 @@ public class ClienteRepository {
 
     public void update(Cliente lista, String id) {
         for(Cliente cliente : clientes){
-            if(cliente.getId().equals(lista.getId())){
+            if(cliente.getIdCliente().equals(lista.getIdCliente())){
                 cliente.setEmail(lista.getEmail());
                 cliente.setEndereco(lista.getEndereco());
                 cliente.setTelefone(lista.getTelefone());
             }
         }
     }
+
+   public Cliente findById(Long idCliente) {
+        for(Cliente cliente : clientes){
+            if(cliente.getIdCliente().equals(idCliente)){
+                return cliente;
+            }
+        }
+        return null;
+    }
+
 }
