@@ -2,8 +2,10 @@ package com.poveda.training_bank.clientes.view;
 
 
 import com.poveda.training_bank.clientes.application.impl.ClienteService;
+import com.poveda.training_bank.clientes.domain.model.Card;
 import com.poveda.training_bank.clientes.domain.model.Cliente;
 import com.poveda.training_bank.clientes.domain.model.Conta;
+import com.poveda.training_bank.clientes.view.support.CardResource;
 import com.poveda.training_bank.clientes.view.support.ClienteResource;
 //import com.poveda.training_bank.clientes.view.support.links.ClienteResourceAssembler;
 import com.poveda.training_bank.clientes.view.support.ClienteResourceAssembler;
@@ -59,6 +61,17 @@ public class ClientesEndpoint {
        Conta conta = cliente.getConta();
 
        return clienteResourceAssembler.toResource(cliente, conta);
+    }
+
+    @GetMapping(path = "/clientes/{idCliente}/contas/cards", produces = MediaType.APPLICATION_JSON_VALUE)
+    public CardResource findCard(@PathVariable Long idCliente){
+       System.out.println("Busca Cartões");
+
+       final Cliente cliente = service.findById(idCliente);
+       Conta conta = cliente.getConta();
+       Card card = conta.getCard();
+
+       return clienteResourceAssembler.toResource(cliente, conta, card);
     }
 
     @DeleteMapping(value = "/clientes/{nome}")

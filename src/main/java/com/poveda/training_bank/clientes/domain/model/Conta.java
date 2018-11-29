@@ -7,6 +7,7 @@ public class Conta {
     private Long saldo;
     private TipoConta tipoConta;
     private TipoPlano tipoPlano;
+    private Card card;
 
     public Long getIdConta() {
         return idConta;
@@ -54,6 +55,14 @@ public class Conta {
 
     public void setNumero(Long numero) {
         this.numero = numero;
+    }
+
+    public Card getCard () {
+        return card;
+    }
+
+    public void setCard (Card card){
+        this.card = card;
     }
 
 }

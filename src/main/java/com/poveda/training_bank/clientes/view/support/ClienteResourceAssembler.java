@@ -1,8 +1,10 @@
 package com.poveda.training_bank.clientes.view.support;
 
+import com.poveda.training_bank.clientes.domain.model.Card;
 import com.poveda.training_bank.clientes.domain.model.Cliente;
 import com.poveda.training_bank.clientes.domain.model.Conta;
 import com.poveda.training_bank.clientes.view.ClientesEndpoint;
+import com.poveda.training_bank.clientes.view.support.links.CardLink;
 import com.poveda.training_bank.clientes.view.support.links.ClienteLink;
 import com.poveda.training_bank.clientes.view.support.links.ContaLink;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,10 +56,28 @@ public class ClienteResourceAssembler extends ResourceAssemblerSupport<Cliente, 
        // resource.add(new Link(CONTA_SELF.replace("{idCliente}", clienteResource.getIdCliente().toString())));
         resource.add(ContaLink.buildUsing(cliente.getIdCliente()));
         resource.add(ClienteLink.buildUsing(cliente.getIdCliente()).withRel("owned-by"));
+        resource.add(CardLink.buildUsing(cliente.getIdCliente()).withRel("has-card"));
 
 
         return resource;
 
+
+    }
+
+    public CardResource toResource(Cliente cliente, Conta conta, Card card) {
+        CardResource resource = new CardResource(card.getIdCard());
+
+        resource.setIdCard(card.getIdCard());
+        resource.setNumeroCard(card.getNumeroCard());
+        resource.setLimite(card.getLimite());
+        resource.setTipoCard(card.getTipoCard());
+        resource.setBandeira((card.getBandeira()));
+
+        resource.add(CardLink.buildUsing(cliente.getIdCliente()));
+        resource.add(ContaLink.buildUsing(cliente.getIdCliente()).withRel("account"));
+        resource.add(ClienteLink.buildUsing(cliente.getIdCliente()).withRel("owned-by"));
+
+        return resource;
 
     }
 }

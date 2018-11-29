@@ -17,7 +17,8 @@ import org.springframework.hateoas.core.Relation;
         "tipoConta",
         "tipoPlano",
         "_links",
-        "_owned-by"
+        "_owned-by",
+        "_has-card"
 })
 @Relation(collectionRelation = "contas")
 @JsonInclude(JsonInclude.Include.NON_NULL)
