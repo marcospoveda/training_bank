@@ -24,7 +24,7 @@ import org.springframework.hateoas.core.Relation;
 public class CardResource extends ResourceSupport {
 
     @JsonProperty(value = "idCard")
-    private Long idCard;
+    private String idCard;
     private Long numeroCard;
     private Long limite;
 
@@ -32,14 +32,14 @@ public class CardResource extends ResourceSupport {
 
     private TipoCard tipoCard;
 
-    public CardResource(Long idCard) {
+    public CardResource(String idCard) {
     }
 
-    public Long getIdCard() {
+    public String getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(Long idCard) {
+    public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 

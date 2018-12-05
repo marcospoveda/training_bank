@@ -6,12 +6,12 @@ import com.poveda.training_bank.clientes.domain.model.Card;
 import com.poveda.training_bank.clientes.domain.model.Cliente;
 import com.poveda.training_bank.clientes.domain.model.Conta;
 import com.poveda.training_bank.clientes.view.support.CardResource;
-import com.poveda.training_bank.clientes.view.support.ClienteResource;
 //import com.poveda.training_bank.clientes.view.support.links.ClienteResourceAssembler;
+import com.poveda.training_bank.clientes.view.support.ClienteResource;
 import com.poveda.training_bank.clientes.view.support.ClienteResourceAssembler;
 import com.poveda.training_bank.clientes.view.support.ContaResource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Resource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,23 +38,25 @@ public class ClientesEndpoint {
         return cliente;
     }
 
-   /* @GetMapping(path = "/clientes", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Cliente findBy(@RequestParam(value = "nome") String nome){
+    @GetMapping(path = "/clientes", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Cliente findByName(@RequestParam(value = "nome") String nome){
         System.out.println("Busca por Nome");
         return service.findByNome(nome);
-    }*/
+    }
 
    @GetMapping(path = "/clientes/{idCliente}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ClienteResource findById(@PathVariable Long idCliente){
+    public ClienteResource findById(@PathVariable String idCliente){
         System.out.println("Busca por ID");
 
         final Cliente clienteResource = service.findById(idCliente);
 
         return clienteResourceAssembler.toResource(clienteResource);
+
+       //return HttpStatus.OK;
     }
 
     @GetMapping(path = "/clientes/{idCliente}/contas", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ContaResource findConta(@PathVariable Long idCliente){
+    public ContaResource findConta(@PathVariable String idCliente){
        System.out.println("Busca por conta");
 
        final Cliente cliente = service.findById(idCliente);
@@ -64,7 +66,7 @@ public class ClientesEndpoint {
     }
 
     @GetMapping(path = "/clientes/{idCliente}/contas/cards", produces = MediaType.APPLICATION_JSON_VALUE)
-    public CardResource findCard(@PathVariable Long idCliente){
+    public CardResource findCard(@PathVariable String idCliente){
        System.out.println("Busca Cartões");
 
        final Cliente cliente = service.findById(idCliente);

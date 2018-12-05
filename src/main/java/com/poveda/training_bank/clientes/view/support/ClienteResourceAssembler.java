@@ -50,8 +50,8 @@ public class ClienteResourceAssembler extends ResourceAssemblerSupport<Cliente, 
         resource.setIdConta(conta.getIdConta());
         resource.setNumero(conta.getNumero());
         resource.setSaldo(conta.getSaldo());
-        resource.setTipoConta(conta.getTipoConta());
-        resource.setTipoPlano(conta.getTipoPlano());
+       // resource.setTipoConta(conta.getTipoConta());
+        //resource.setTipoPlano(conta.getTipoPlano());
 
        // resource.add(new Link(CONTA_SELF.replace("{idCliente}", clienteResource.getIdCliente().toString())));
         resource.add(ContaLink.buildUsing(cliente.getIdCliente()));
@@ -70,8 +70,8 @@ public class ClienteResourceAssembler extends ResourceAssemblerSupport<Cliente, 
         resource.setIdCard(card.getIdCard());
         resource.setNumeroCard(card.getNumeroCard());
         resource.setLimite(card.getLimite());
-        resource.setTipoCard(card.getTipoCard());
-        resource.setBandeira((card.getBandeira()));
+        //resource.setTipoCard(card.getTipoCard());
+      //  resource.setBandeira((card.getBandeira()));
 
         resource.add(CardLink.buildUsing(cliente.getIdCliente()));
         resource.add(ContaLink.buildUsing(cliente.getIdCliente()).withRel("account"));

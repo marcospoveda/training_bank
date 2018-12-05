@@ -1,19 +1,25 @@
 package com.poveda.training_bank.clientes.domain.model;
 
+import java.io.Serializable;
+
 public class Conta {
-    private Long idConta;
+    private String idConta;
     private Long numero;
     private Long agencia;
     private Long saldo;
-    private TipoConta tipoConta;
-    private TipoPlano tipoPlano;
+  //  private TipoConta tipoConta;
+   // private TipoPlano tipoPlano;
     private Card card;
 
-    public Long getIdConta() {
+    public Conta(){
+
+    }
+
+    public String getIdConta() {
         return idConta;
     }
 
-    public void setIdConta(Long idConta) {
+    public void setIdConta(String idConta) {
         this.idConta = idConta;
     }
 
@@ -25,13 +31,13 @@ public class Conta {
         this.agencia = agencia;
     }
 
-    public TipoConta getTipoConta() {
+    /*public TipoConta getTipoConta() {
         return tipoConta;
     }
 
     public void setTipoConta(TipoConta tipoConta) {
         this.tipoConta = tipoConta;
-    }
+    }*/
 
     public Long getSaldo() {
         return saldo;
@@ -41,13 +47,13 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public TipoPlano getTipoPlano() {
+    /*public TipoPlano getTipoPlano() {
         return tipoPlano;
     }
 
     public void setTipoPlano(TipoPlano tipoPlano) {
         this.tipoPlano = tipoPlano;
-    }
+    }*/
 
     public Long getNumero() {
         return numero;

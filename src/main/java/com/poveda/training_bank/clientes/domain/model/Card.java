@@ -1,19 +1,21 @@
 package com.poveda.training_bank.clientes.domain.model;
 
+import java.io.Serializable;
+
 public class Card {
 
-    private Long idCard;
+    private String idCard;
     private Long numeroCard;
     private Long limite;
-    private TipoCard tipoCard;
-    private Bandeira bandeira;
+    //private TipoCard tipoCard;
+    //private Bandeira bandeira;
 
 
-    public Long getIdCard() {
+    public String getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(Long idCard) {
+    public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 
@@ -33,7 +35,7 @@ public class Card {
         this.limite = limite;
     }
 
-    public TipoCard getTipoCard() {
+/*    public TipoCard getTipoCard() {
         return tipoCard;
     }
 
@@ -47,5 +49,5 @@ public class Card {
 
     public void setBandeira(Bandeira bandeira) {
         this.bandeira = bandeira;
-    }
+    }*/
 }

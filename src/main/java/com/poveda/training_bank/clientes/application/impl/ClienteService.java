@@ -8,11 +8,11 @@ public interface ClienteService {
 
     void save(Cliente cliente);
 
-   // Cliente findByNome(String nome);
+    Cliente findByNome(String nome);
 
     void delete(String nome);
 
     void update(Cliente cliente, String id);
 
-    Cliente findById(Long idCliente);
+    Cliente findById(String idCliente);
 }

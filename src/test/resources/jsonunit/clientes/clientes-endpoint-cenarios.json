@@ -1,0 +1,22 @@
+[
+  {
+    "cenario": "Conta localizada",
+    "json": {
+      "idCliente": "1",
+      "nome": "Marcos",
+      "rg": "11111111111",
+      "cpf": 11111111111,
+      "endereco": "Rua Teste",
+      "telefone": 11123456789,
+      "email": "teste@uolinc.com",
+      "_links": {
+        "self": {
+          "href": "/clientes/1"
+        },
+        "has-account": {
+          "href": "/clientes/1/contas"
+        }
+      }
+    }
+  }
+]

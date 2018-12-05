@@ -1,7 +1,12 @@
 package com.poveda.training_bank.clientes.domain.model;
 
-public class Cliente {
-    private Long idCliente;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.io.Serializable;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Cliente implements Serializable{
+    private String idCliente;
     private String nome;
     private String rg;
     private Long cpf;
@@ -9,6 +14,12 @@ public class Cliente {
     private String endereco;
     private String email;
     private Conta conta;
+
+    public Cliente(){
+    }
+
+    public Cliente(String idCliente, String nome, String rg, Long cpf, Long telefone, String endereco, String email){
+    }
 
     public Conta getConta() {
         return conta;
@@ -18,11 +29,11 @@ public class Cliente {
         this.conta = conta;
     }
 
-    public Long getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Long idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 

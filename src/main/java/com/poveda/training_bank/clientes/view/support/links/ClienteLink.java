@@ -6,7 +6,7 @@ public class ClienteLink {
 
     private static final String CLIENTE = "/clientes/{idCliente}";
 
-    public static Link buildUsing(Long idCliente){
-        return new Link(CLIENTE.replace("{idCliente}", idCliente.toString()));
+    public static Link buildUsing(String idCliente){
+        return new Link(CLIENTE.replace("{idCliente}", idCliente));
     }
 }

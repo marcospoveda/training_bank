@@ -23,7 +23,7 @@ import org.springframework.hateoas.core.Relation;
 public class ClienteResource extends ResourceSupport {
 
     @JsonProperty(value = "idCliente")
-    private Long idCliente;
+    private String idCliente;
     private String nome;
     private String rg;
     private Long cpf;
@@ -32,14 +32,14 @@ public class ClienteResource extends ResourceSupport {
     private String email;
     //private ContaResource conta;
 
-    public ClienteResource(Long idCliente) {
+    public ClienteResource(String idCliente) {
     }
 
-    public Long getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Long idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
