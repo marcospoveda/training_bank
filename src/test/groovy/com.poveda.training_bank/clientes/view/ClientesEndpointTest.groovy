@@ -6,6 +6,7 @@ import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import spock.lang.Unroll
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST
 import static org.springframework.http.HttpStatus.OK
 import static org.springframework.http.HttpStatus.NOT_FOUND
 
@@ -23,6 +24,7 @@ class ClientesEndpointTest extends AbstractIntegrationGroovySpec{
         given:
             def uri = "/clientes/${idCliente}"
 
+
         when:
             def mvc = mockMvc.perform(MockMvcRequestBuilders.get(uri)).andReturn()
 
@@ -32,8 +34,9 @@ class ClientesEndpointTest extends AbstractIntegrationGroovySpec{
 
         where:
         idCliente ||      expectedBody           ||   status
-           "1"    ||    "Conta localizada"       ||     OK
-           "50"   ||    "Conta inexistente"      ||     NOT_FOUND
+           "1"    ||    "Cliente localizado"     ||     OK
+           "50"   ||    "Cliente inexistente"    ||     NOT_FOUND
+           " "    ||    "Solicitacao invalida"   ||     BAD_REQUEST
     }
 
 

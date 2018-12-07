@@ -30,15 +30,15 @@ class SceneryLoaderHelper {
 
             def encoding = System.getProperty("file.encoding")
             final def json = IOUtils.toString(stream, encoding)
-            System.out.println(json)
+            //System.out.println(json)
             final def extension = FilenameUtils.getExtension(fileName)
-            System.out.println(extension)
+            //System.out.println(extension)
 
             if (!sceneryStrategy.containsKey(extension)) {
                 throw new RuntimeException("File type not supported: " + extension)
             }
             final def sceneriesToInsert = sceneryStrategy.get(extension).parser(json)
-            System.out.println(sceneriesToInsert)
+            //System.out.println(sceneriesToInsert)
 
             for(SceneryLoaderHelper.Scenery scenery : sceneriesToInsert) {
                 scenery.file = fileFullName

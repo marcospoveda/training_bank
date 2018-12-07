@@ -21,4 +21,12 @@ public class ErrorHandlingController extends ResponseEntityExceptionHandler {
         return new ErrorHandlerResult(request.getRequestURI()).addErrors(exception.getMessage(), HttpStatus.NOT_FOUND.value());
     }
 
+
+    @ExceptionHandler(ValidationException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorHandlerResult badrequest(final ValidationException exception, HttpServletRequest request){
+        return new ErrorHandlerResult(request.getRequestURI()).addErrors(exception.getErrors().toString(), HttpStatus.BAD_REQUEST.value());
+    }
+
 }

@@ -11,6 +11,8 @@ import com.poveda.training_bank.clientes.view.support.ClienteResource;
 import com.poveda.training_bank.clientes.view.support.ClienteResourceAssembler;
 import com.poveda.training_bank.clientes.view.support.ContaResource;
 import com.poveda.training_bank.infrastructure.exceptions.NotFoundException;
+import com.poveda.training_bank.infrastructure.exceptions.ValidationException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -49,6 +51,8 @@ public class ClientesEndpoint {
    @GetMapping(path = "/clientes/{idCliente}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ClienteResource findById(@PathVariable String idCliente){
         System.out.println("Busca por ID");
+
+       if(StringUtils.isBlank(idCliente) || idCliente == null) throw new ValidationException("Solicitacao invalida");
 
         final Cliente clienteResource = service.findById(idCliente);
 

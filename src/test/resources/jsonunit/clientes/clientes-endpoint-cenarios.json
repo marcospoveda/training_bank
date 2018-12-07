@@ -1,6 +1,6 @@
 [
   {
-    "cenario": "Conta localizada",
+    "cenario": "Cliente localizado",
     "json": {
       "idCliente": "1",
       "nome": "Marcos",
@@ -20,7 +20,7 @@
     }
   },
   {
-    "cenario": "Conta inexistente",
+    "cenario": "Cliente inexistente",
     "json":{
       "uri": "/clientes/50",
       "errors":{
@@ -31,6 +31,20 @@
             "code": 404
         }
           ]
+      }
+    }
+  },
+  {
+    "cenario": "Solicitacao invalida",
+    "json":{
+      "uri": "/clientes/%20",
+      "errors":{
+        "messages":[
+          {
+            "message": "[Solicitacao invalida]",
+            "code": 400
+          }
+        ]
       }
     }
   }

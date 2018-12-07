@@ -4,6 +4,8 @@ import com.poveda.training_bank.ClientesConfig;
 import com.poveda.training_bank.clientes.domain.model.Cliente;
 import com.poveda.training_bank.clientes.domain.model.ClienteValidator;
 import com.poveda.training_bank.clientes.repository.ClienteRepository;
+import com.poveda.training_bank.infrastructure.exceptions.ValidationException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Validator;
@@ -30,7 +32,7 @@ public class ClienteServiceImpl implements ClienteService {
 
    @Override
     public Cliente findByNome(String nome) {
-     //  this.clienteRepository = ClientesConfig.config();
+       this.clienteRepository = ClientesConfig.config();
         return clienteRepository.findByNome(nome);
     }
 
