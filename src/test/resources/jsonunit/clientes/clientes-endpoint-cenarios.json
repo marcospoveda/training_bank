@@ -4,8 +4,8 @@
     "json": {
       "idCliente": "1",
       "nome": "Marcos",
-      "rg": "11111111111",
-      "cpf": 11111111111,
+      "rg": "111111111",
+      "cpf": 111111111,
       "endereco": "Rua Teste",
       "telefone": 11123456789,
       "email": "teste@uolinc.com",
@@ -16,6 +16,21 @@
         "has-account": {
           "href": "/clientes/1/contas"
         }
+      }
+    }
+  },
+  {
+    "cenario": "Conta inexistente",
+    "json":{
+      "uri": "/clientes/50",
+      "errors":{
+        "messages":[
+
+        {
+            "message": "Conta nao localizada, id 50",
+            "code": 404
+        }
+          ]
       }
     }
   }

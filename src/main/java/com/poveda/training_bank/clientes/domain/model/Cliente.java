@@ -1,6 +1,7 @@
 package com.poveda.training_bank.clientes.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.poveda.training_bank.clientes.view.support.ClienteResource;
 
 import java.io.Serializable;
 

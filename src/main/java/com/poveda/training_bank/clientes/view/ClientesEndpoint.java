@@ -10,10 +10,12 @@ import com.poveda.training_bank.clientes.view.support.CardResource;
 import com.poveda.training_bank.clientes.view.support.ClienteResource;
 import com.poveda.training_bank.clientes.view.support.ClienteResourceAssembler;
 import com.poveda.training_bank.clientes.view.support.ContaResource;
+import com.poveda.training_bank.infrastructure.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 @RestController
 public class ClientesEndpoint {
@@ -50,9 +52,11 @@ public class ClientesEndpoint {
 
         final Cliente clienteResource = service.findById(idCliente);
 
+        if(clienteResource == null) throw new NotFoundException("Conta nao localizada, id " + idCliente);
+
         return clienteResourceAssembler.toResource(clienteResource);
 
-       //return HttpStatus.OK;
+            //return HttpStatus.OK;
     }
 
     @GetMapping(path = "/clientes/{idCliente}/contas", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -61,6 +65,8 @@ public class ClientesEndpoint {
 
        final Cliente cliente = service.findById(idCliente);
        Conta conta = cliente.getConta();
+
+
 
        return clienteResourceAssembler.toResource(cliente, conta);
     }

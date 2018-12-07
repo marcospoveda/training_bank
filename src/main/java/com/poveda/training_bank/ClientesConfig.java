@@ -15,7 +15,7 @@ public class ClientesConfig {
 
         ClienteRepository clienteRepository = new ClienteRepository();
 
-        /*Card card = new Card();
+        Card card = new Card();
         card.setIdCard("1");
         card.setNumeroCard(123L);
         card.setLimite(1200L);
@@ -26,7 +26,7 @@ public class ClientesConfig {
         conta.setCard(card);
         conta.setNumero(1234L);
         conta.setSaldo(1500L);
-*/
+
         Cliente cliente = new Cliente();
         cliente.setIdCliente("1");
         cliente.setNome("Marcos");
@@ -35,7 +35,7 @@ public class ClientesConfig {
         cliente.setEndereco("Rua Teste");
         cliente.setTelefone(11123456789L);
         cliente.setEmail("teste@uolinc.com");
-       // cliente.setConta(conta);
+        cliente.setConta(conta);
 
 
         clienteRepository.save(cliente);

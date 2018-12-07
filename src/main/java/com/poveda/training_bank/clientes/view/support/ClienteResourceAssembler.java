@@ -43,7 +43,6 @@ public class ClienteResourceAssembler extends ResourceAssemblerSupport<Cliente, 
         return resource;
     }
 
-
     public ContaResource toResource(Cliente cliente, Conta conta){
         ContaResource resource = new ContaResource(conta.getIdConta());
 

@@ -5,6 +5,7 @@ import com.poveda.training_bank.clientes.domain.model.Card;
 import com.poveda.training_bank.clientes.domain.model.Cliente;
 import com.poveda.training_bank.clientes.domain.model.Conta;
 import com.poveda.training_bank.clientes.view.support.ClienteResource;
+import com.poveda.training_bank.infrastructure.exceptions.NotFoundException;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Repository;
 
@@ -64,7 +65,7 @@ public class ClienteRepository {
                 return cliente;
             }
         }
-        return null;
+       return null;
     }
 
 }

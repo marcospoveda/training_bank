@@ -7,6 +7,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import spock.lang.Unroll
 
 import static org.springframework.http.HttpStatus.OK
+import static org.springframework.http.HttpStatus.NOT_FOUND
 
 @ContextConfiguration()
 class ClientesEndpointTest extends AbstractIntegrationGroovySpec{
@@ -16,17 +17,6 @@ class ClientesEndpointTest extends AbstractIntegrationGroovySpec{
     def setupSpec(){
         sceneryLoaderHelper.load("clientes/clientes-endpoint-cenarios.json")
     }
-
-    /*def setup(){
-        clienteRepository = Mockito.mock(ClienteRepository)
-        ServiceLocator.registry(ClienteRepository, this.clienteRepository)
-
-        Cliente cliente = new Cliente("1", "Marcos", "111111111", 111111111, 123456789, "BL458", "sit_mpoveda@uolinc.com");
-
-        //clienteDataSet = new HashMap<>()
-        //clienteDataSet.put("1", cliente)
-
-    }*/
 
     @Unroll
     def "Teste2"(){
@@ -42,8 +32,8 @@ class ClientesEndpointTest extends AbstractIntegrationGroovySpec{
 
         where:
         idCliente ||      expectedBody           ||   status
-           "1"    ||    "Conta localizada"       ||    OK
-       //    "20"   ||    "Conta não localizada"   ||    NOT_FOUND
+           "1"    ||    "Conta localizada"       ||     OK
+           "50"   ||    "Conta inexistente"      ||     NOT_FOUND
     }
 
 

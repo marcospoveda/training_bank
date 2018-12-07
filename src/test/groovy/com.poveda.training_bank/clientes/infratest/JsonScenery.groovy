@@ -1,6 +1,7 @@
 package com.poveda.training_bank.clientes.infratest
 
 import com.google.gson.GsonBuilder
+import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import net.minidev.json.JSONArray
 
@@ -18,7 +19,7 @@ class JsonScenery {
             if (jsonFound instanceof JSONArray) {
                 scenery.setJson(jsonFound.toString())
             } else {
-                scenery.setJson(new GsonBuilder().disableHtmlEscaping().enableComplexMapKeySerialization().serializeNulls().create().toJson(jsonFound))
+                scenery.setJson(JsonOutput.toJson(jsonFound))
             }
             return scenery
         }

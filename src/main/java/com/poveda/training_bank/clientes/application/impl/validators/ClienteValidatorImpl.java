@@ -13,13 +13,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
-public class ClienteValidatorImpl implements Validator {
-    @Override
+public class ClienteValidatorImpl implements ClienteValidator {
+
+
     public boolean supports(Class<?> aClass) {
         return Cliente.class.equals(aClass);
     }
 
-    @Override
+
     public void validate(Object o, Errors errors) {
 
         ValidationUtils.rejectIfEmpty(errors, "nome", "nome.empty");
@@ -27,7 +28,7 @@ public class ClienteValidatorImpl implements Validator {
     }
 
 
-   /* private Map<String, CheckRule> rules = new HashMap<>();
+    private Map<String, CheckRule> rules = new HashMap<>();
 
     {
         rules.put("ID do cliente é obrigatório", cliente -> cliente.getIdCliente() == null);

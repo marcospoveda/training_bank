@@ -30,7 +30,7 @@ public class ClienteServiceImpl implements ClienteService {
 
    @Override
     public Cliente findByNome(String nome) {
-       this.clienteRepository = ClientesConfig.config();
+     //  this.clienteRepository = ClientesConfig.config();
         return clienteRepository.findByNome(nome);
     }
 
