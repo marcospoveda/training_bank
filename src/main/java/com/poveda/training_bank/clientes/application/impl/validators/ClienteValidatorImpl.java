@@ -1,7 +1,8 @@
-/*package com.poveda.training_bank.clientes.application.impl.validators;
+package com.poveda.training_bank.clientes.application.impl.validators;
 
 import com.poveda.training_bank.clientes.domain.model.Cliente;
 import com.poveda.training_bank.clientes.domain.model.ClienteValidator;
+import com.poveda.training_bank.infrastructure.exceptions.ValidationException;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -9,6 +10,7 @@ import org.springframework.validation.Validator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -34,9 +36,9 @@ public class ClienteValidatorImpl implements ClienteValidator {
         rules.put("ID do cliente é obrigatório", cliente -> cliente.getIdCliente() == null);
         rules.put("Nome do cliente é requerido", cliente -> cliente.getNome() == null);
         rules.put("Endereço do cliente é requerido", cliente -> cliente.getEndereco() == null);
-        rules.put("Telefone do cliente é requerido", cliente -> cliente.getTelefone() <= 0);
+        rules.put("Telefone do cliente é requerido", cliente -> cliente.getTelefone() == null || cliente.getTelefone() <= 0);
         rules.put("RG do cliente é requerido", cliente -> cliente.getRg() == null);
-        rules.put("CPF do cliente é requerido", cliente -> cliente.getCpf() <= 0);
+        rules.put("CPF do cliente é requerido", cliente -> cliente.getCpf() == null || cliente.getCpf() <= 0);
         rules.put("Email do cliente é requerido", cliente -> cliente.getEmail() == null);
        // rules.put("Conta do cliente é obrigatória", cliente -> cliente.getConta() == null);
     }
@@ -50,8 +52,7 @@ public class ClienteValidatorImpl implements ClienteValidator {
                 .collect(Collectors.toSet());
 
         if (!violations.isEmpty()){
-            System.out.println("OK");
-            throw new IllegalArgumentException("OK");
+            throw new ValidationException(violations.toString());
         }
     }
 
@@ -59,4 +60,4 @@ public class ClienteValidatorImpl implements ClienteValidator {
         Boolean check(Cliente cliente);
     }
 
-}*/
+}

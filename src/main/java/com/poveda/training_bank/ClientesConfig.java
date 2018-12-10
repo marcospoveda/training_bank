@@ -16,19 +16,19 @@ public class ClientesConfig {
         ClienteRepository clienteRepository = new ClienteRepository();
 
         Card card = new Card();
-        card.setIdCard("1");
+        card.setIdCard(1L);
         card.setNumeroCard(123L);
         card.setLimite(1200L);
 
         Conta conta = new Conta();
-        conta.setIdConta("1");
+        conta.setIdConta(1L);
         conta.setAgencia(123L);
         conta.setCard(card);
         conta.setNumero(1234L);
         conta.setSaldo(1500L);
 
         Cliente cliente = new Cliente();
-        cliente.setIdCliente("1");
+        cliente.setIdCliente(1L);
         cliente.setNome("Marcos");
         cliente.setRg("111111111");
         cliente.setCpf(111111111L);

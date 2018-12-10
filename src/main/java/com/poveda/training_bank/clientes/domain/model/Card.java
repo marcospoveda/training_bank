@@ -4,18 +4,18 @@ import java.io.Serializable;
 
 public class Card {
 
-    private String idCard;
+    private Long idCard;
     private Long numeroCard;
     private Long limite;
     //private TipoCard tipoCard;
     //private Bandeira bandeira;
 
 
-    public String getIdCard() {
+    public Long getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(String idCard) {
+    public void setIdCard(Long idCard) {
         this.idCard = idCard;
     }
 

@@ -26,7 +26,7 @@ public class ContaResource extends ResourceSupport {
 
 
     @JsonProperty(value = "id")
-    private String idConta;
+    private Long idConta;
     private Long numero;
     private Long agencia;
     private Long saldo;
@@ -42,14 +42,14 @@ public class ContaResource extends ResourceSupport {
 
     }
 
-    public ContaResource(String idConta) {
+    public ContaResource(Long idConta) {
     }
 
-    public String getIdConta() {
+    public Long getIdConta() {
         return idConta;
     }
 
-    public void setIdConta(String idConta) {
+    public void setIdConta(Long idConta) {
         this.idConta = idConta;
     }
 

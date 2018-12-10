@@ -19,8 +19,10 @@ class ClientesEndpointTest extends AbstractIntegrationGroovySpec{
         sceneryLoaderHelper.load("clientes/clientes-endpoint-cenarios.json")
     }
 
-    @Unroll
-    def "Teste2"(){
+//-----------------------------------------------------------------------------------------------------------------//
+
+    @Unroll("Busca de cliente por ID, cenario: [#expectedBody]")
+    def "Busca Cliente ID"(){
         given:
             def uri = "/clientes/${idCliente}"
 
@@ -34,11 +36,51 @@ class ClientesEndpointTest extends AbstractIntegrationGroovySpec{
 
         where:
         idCliente ||      expectedBody           ||   status
-           "1"    ||    "Cliente localizado"     ||     OK
-           "50"   ||    "Cliente inexistente"    ||     NOT_FOUND
-           " "    ||    "Solicitacao invalida"   ||     BAD_REQUEST
+            1     ||    "Cliente localizado"     ||     OK
+            50    ||    "Cliente inexistente"    ||     NOT_FOUND
+            ' '   ||    "Solicitacao invalida"   ||     BAD_REQUEST
     }
 
+//--------------------------------------------------------------------------------------------------------------//
+
+    @Unroll("Busca cliente pelo nome, cenario: [#expectedBody]")
+    def "Deleta Cliente"(){
+        given:
+            def uri = "/clientes/${nome}"
+
+        when:
+            def mvc = mockMvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn()
+
+        then:
+            mvc.response.status == status.value()
+            mvc.response.contentAsString == this.sceneryLoaderHelper.getRequestScenery(expectedBody).getJson()
+
+        where:
+          nome    ||            expectedBody          ||  status
+        "Teste"   ||      "Cliente nao localizado"    ||    NOT_FOUND
+        " "       ||       "Cliente invalido"         ||    BAD_REQUEST
+    }
+
+//-------------------------------------------------------------------------------------------------------------//
+
+    @Unroll("Busca de contas, cenario: [#expectedBody]")
+    def "Busca Contas"(){
+        given:
+            def uri = "/clientes/${idCliente}/contas"
+
+        when:
+            def mvc = mockMvc.perform(MockMvcRequestBuilders.get(uri)).andReturn()
+
+        then:
+            mvc.response.status == status.value()
+            mvc.response.contentAsString == this.sceneryLoaderHelper.getRequestScenery(expectedBody).getJson()
+
+        where:
+        idCliente  ||      expectedBody      ||   status
+           1       ||    "Conta localizada"  ||    OK
+           51      ||    "Conta inexistente" ||    NOT_FOUND
+          ' '      ||    "Conta invalida"    ||    BAD_REQUEST
+    }
 
 /*    def idTeste = "20"
 

@@ -6,7 +6,7 @@ public class ContaLink {
 
     private static final String CONTA_CLIENTE = "/clientes/{idCliente}/contas";
 
-    public static Link buildUsing(String idCliente){
-        return new Link(CONTA_CLIENTE.replace("{idCliente}", idCliente));
+    public static Link buildUsing(Long idCliente){
+        return new Link(CONTA_CLIENTE.replace("{idCliente}", idCliente.toString()));
     }
 }

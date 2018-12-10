@@ -2,7 +2,7 @@
   {
     "cenario": "Cliente localizado",
     "json": {
-      "idCliente": "1",
+      "idCliente": 1,
       "nome": "Marcos",
       "rg": "111111111",
       "cpf": 111111111,
@@ -27,7 +27,7 @@
         "messages":[
 
         {
-            "message": "Conta nao localizada, id 50",
+            "message": "Cliente inexistente, id 50",
             "code": 404
         }
           ]
@@ -42,6 +42,81 @@
         "messages":[
           {
             "message": "[Solicitacao invalida]",
+            "code": 400
+          }
+        ]
+      }
+    }
+  },
+  {
+    "cenario": "Cliente nao localizado",
+    "json": {
+      "uri": "/clientes/Teste",
+      "errors":{
+        "messages":[
+          {
+            "message": "Cliente nao localizado",
+            "code": 404
+          }
+        ]
+      }
+    }
+  },
+  {
+    "cenario": "Cliente invalido",
+    "json": {
+      "uri": "/clientes/%20",
+      "errors":{
+        "messages":[
+          {
+            "message": "[Cliente invalido]",
+            "code": 400
+          }
+        ]
+      }
+    }
+  },
+  {
+    "cenario": "Conta localizada",
+    "json":{
+      "id": 1,
+      "numero": 1234,
+      "saldo": 1500,
+      "_links": {
+        "self": {
+          "href": "/clientes/1/contas"
+        },
+        "owned-by": {
+          "href": "/clientes/1"
+        },
+        "has-card": {
+          "href": "/clientes/1/contas/cards"
+      }
+    },
+    }
+  },
+  {
+    "cenario": "Conta inexistente",
+    "json":{
+      "uri": "/clientes/51/contas",
+      "errors":{
+        "messages":[
+          {
+            "message": "Conta inexistente",
+            "code": 404
+          }
+        ]
+      }
+    }
+  },
+  {
+    "cenario": "Conta invalida",
+    "json":{
+      "uri": "/clientes/%20/contas",
+      "errors": {
+        "messages":[
+          {
+            "message": "[Conta invalida]",
             "code": 400
           }
         ]

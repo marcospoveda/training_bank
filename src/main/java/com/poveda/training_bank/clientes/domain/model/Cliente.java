@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Cliente implements Serializable{
-    private String idCliente;
+    private Long idCliente;
     private String nome;
     private String rg;
     private Long cpf;
@@ -19,7 +19,7 @@ public class Cliente implements Serializable{
     public Cliente(){
     }
 
-    public Cliente(String idCliente, String nome, String rg, Long cpf, Long telefone, String endereco, String email){
+    public Cliente(Long idCliente, String nome, String rg, Long cpf, Long telefone, String endereco, String email){
     }
 
     public Conta getConta() {
@@ -30,11 +30,11 @@ public class Cliente implements Serializable{
         this.conta = conta;
     }
 
-    public String getIdCliente() {
+    public Long getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(String idCliente) {
+    public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
 

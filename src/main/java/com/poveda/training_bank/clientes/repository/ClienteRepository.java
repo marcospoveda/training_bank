@@ -6,6 +6,7 @@ import com.poveda.training_bank.clientes.domain.model.Cliente;
 import com.poveda.training_bank.clientes.domain.model.Conta;
 import com.poveda.training_bank.clientes.view.support.ClienteResource;
 import com.poveda.training_bank.infrastructure.exceptions.NotFoundException;
+import com.poveda.training_bank.infrastructure.exceptions.ValidationException;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Repository;
 
@@ -44,11 +45,14 @@ public class ClienteRepository {
         while(iterator.hasNext()){
             if(iterator.next().getNome().equals(nome)){
                 iterator.remove();
+            } else{
+                throw new NotFoundException("Cliente nao localizado");
             }
+
         }
     }
 
-    public void update(Cliente lista, String id) {
+    public void update(Cliente lista, Long id) {
         for(Cliente cliente : clientes){
             if(cliente.getIdCliente().equals(lista.getIdCliente())){
                 cliente.setEmail(lista.getEmail());
@@ -58,7 +62,7 @@ public class ClienteRepository {
         }
     }
 
-   public Cliente findById(String idCliente) {
+   public Cliente findById(Long idCliente) {
 
         for(Cliente cliente : clientes){
             if(cliente.getIdCliente().equals(idCliente)){

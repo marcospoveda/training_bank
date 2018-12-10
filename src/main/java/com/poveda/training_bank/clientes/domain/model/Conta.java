@@ -3,7 +3,7 @@ package com.poveda.training_bank.clientes.domain.model;
 import java.io.Serializable;
 
 public class Conta {
-    private String idConta;
+    private Long idConta;
     private Long numero;
     private Long agencia;
     private Long saldo;
@@ -15,11 +15,11 @@ public class Conta {
 
     }
 
-    public String getIdConta() {
+    public Long getIdConta() {
         return idConta;
     }
 
-    public void setIdConta(String idConta) {
+    public void setIdConta(Long idConta) {
         this.idConta = idConta;
     }
 

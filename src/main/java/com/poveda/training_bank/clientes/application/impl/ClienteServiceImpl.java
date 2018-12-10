@@ -8,24 +8,23 @@ import com.poveda.training_bank.infrastructure.exceptions.ValidationException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Validator;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
     private ClienteRepository clienteRepository;
 
-  //  private Validator clienteValidator;
+    private ClienteValidator clienteValidator;
 
     @Autowired
-    public ClienteServiceImpl(ClienteRepository clienteRepository, Validator validator){
-      //  this.clienteValidator = validator;
+    public ClienteServiceImpl(ClienteRepository clienteRepository, ClienteValidator validator){
+        this.clienteValidator = validator;
         this.clienteRepository = clienteRepository;
     }
 
     @Override
     public void save(Cliente cliente) {
-    //    clienteValidator.checkRules(cliente);
+        clienteValidator.checkRules(cliente);
         this.clienteRepository = ClientesConfig.config();
         clienteRepository.save(cliente);
     }
@@ -43,13 +42,13 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public void update(Cliente cliente, String id) {
-        this.clienteRepository = ClientesConfig.config();
+    public void update(Cliente cliente, Long id) {
+       this.clienteRepository = ClientesConfig.config();
         clienteRepository.update(cliente, id);
     }
 
     @Override
-    public Cliente findById(String idCliente) {
+    public Cliente findById(Long idCliente) {
         this.clienteRepository = ClientesConfig.config();
         return clienteRepository.findById(idCliente);
     }

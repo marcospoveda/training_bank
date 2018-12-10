@@ -6,8 +6,8 @@ public class CardLink {
 
     private static final String CARTAO_CONTA = "/clientes/{idCliente}/contas/cards";
 
-    public static Link buildUsing(String idCliente){
-        return new Link(CARTAO_CONTA.replace("{idCliente}", idCliente));
+    public static Link buildUsing(Long idCliente){
+        return new Link(CARTAO_CONTA.replace("{idCliente}", idCliente.toString()));
     }
 
 }
