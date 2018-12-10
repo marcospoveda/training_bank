@@ -122,5 +122,56 @@
         ]
       }
     }
+  },
+  {
+    "cenario": "Cliente encontrado",
+    "json":{
+      "idCliente": 1,
+      "nome": "Marcos",
+      "rg": "111111111",
+      "cpf": 111111111,
+      "telefone": 11123456789,
+      "endereco": "Rua Teste",
+      "email": "teste@uolinc.com",
+      "conta": {
+        "idConta": 1,
+        "numero": 1234,
+        "agencia": 123,
+        "saldo": 1500,
+          "card": {
+          "idCard": 1,
+          "numeroCard": 123,
+          "limite": 1200
+         }
+      }
+    }
+  },
+  {
+    "cenario": "Cliente not found",
+    "json": {
+      "uri": "/clientes",
+      "errors":{
+        "messages":[
+          {
+            "message": "Cliente not found",
+            "code": 404
+          }
+        ]
+      }
+    }
+  },
+  {
+    "cenario": "Requisicao invalida",
+    "json": {
+      "uri": "/clientes",
+      "errors": {
+        "messages":[
+          {
+            "message": "[Requisicao invalida]",
+            "code": 400
+          }
+        ]
+      }
+    }
   }
 ]

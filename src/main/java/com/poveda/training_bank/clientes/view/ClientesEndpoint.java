@@ -45,14 +45,18 @@ public class ClientesEndpoint {
     @GetMapping(path = "/clientes", produces = MediaType.APPLICATION_JSON_VALUE)
     public Cliente findByName(@RequestParam(value = "nome") String nome){
         System.out.println("Busca por Nome");
-        return service.findByNome(nome);
+        if(StringUtils.isBlank(nome)) throw new ValidationException("Requisicao invalida");
+        Cliente cliente = service.findByNome(nome);
+
+        if(cliente == null) throw new NotFoundException("Cliente not found");
+        return cliente;
     }
 
    @GetMapping(path = "/clientes/{idCliente}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ClienteResource findById(@PathVariable Long idCliente){
         System.out.println("Busca por ID");
 
-       if(idCliente == null) throw new ValidationException("Solicitacao invalida");
+        if(idCliente == null) throw new ValidationException("Solicitacao invalida");
 
         final Cliente clienteResource = service.findById(idCliente);
 

@@ -19,6 +19,26 @@ class ClientesEndpointTest extends AbstractIntegrationGroovySpec{
         sceneryLoaderHelper.load("clientes/clientes-endpoint-cenarios.json")
     }
 
+
+    @Unroll("Busca de Clientes por Nome, cenario [#expectedBody]")
+    def "Busca Cliente por Nome"(){
+        given:
+            def uri = "/clientes"
+
+        when:
+            def mvc = mockMvc.perform(MockMvcRequestBuilders.get(uri).param("nome", nome)).andReturn()
+
+        then:
+            mvc.response.status == status.value()
+            mvc.response.contentAsString == this.sceneryLoaderHelper.getRequestScenery(expectedBody).getJson()
+
+        where:
+          nome    ||       expectedBody       ||  status
+        "Marcos"  ||   "Cliente encontrado"   ||    OK
+        "Teste"   ||   "Cliente not found"    ||   NOT_FOUND
+        " "       ||   "Requisicao invalida"  ||   BAD_REQUEST
+    }
+
 //-----------------------------------------------------------------------------------------------------------------//
 
     @Unroll("Busca de cliente por ID, cenario: [#expectedBody]")
