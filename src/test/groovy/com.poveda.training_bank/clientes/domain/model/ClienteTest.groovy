@@ -27,8 +27,8 @@ class ClienteTest extends Specification{
         where:
 
         clienteId   |   clienteNome     |   clienteRg   |   clienteEndereco ||  id  ||  nome      ||     rg        ||  endereco
-        "1"         |   "Marcos"        |   "111111111" |   "BL458"         ||  "1" ||  "Marcos"  ||  "111111111"  ||  "BL458"
-        "2"         |   "Teste"         |   "123456789" |   "BL425"         ||  "2" ||  "Teste"   ||  "123456789"  ||  "BL425"
-        "3"         |   "Teste2"        |   "012345678" |   "FL"            ||  "3" ||  "Teste2"  ||  "012345678"  ||   "FL"
+         1          |   "Marcos"        |   "111111111" |   "BL458"         ||   1  ||  "Marcos"  ||  "111111111"  ||  "BL458"
+         2          |   "Teste"         |   "123456789" |   "BL425"         ||   2  ||  "Teste"   ||  "123456789"  ||  "BL425"
+         3          |   "Teste2"        |   "012345678" |   "FL"            ||   3  ||  "Teste2"  ||  "012345678"  ||   "FL"
     }
 }

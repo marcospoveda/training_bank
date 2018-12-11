@@ -17,39 +17,34 @@ public class ClienteServiceImpl implements ClienteService {
     private ClienteValidator clienteValidator;
 
     @Autowired
-    public ClienteServiceImpl(ClienteRepository clienteRepository, ClienteValidator validator){
+    public ClienteServiceImpl(ClienteValidator validator){
         this.clienteValidator = validator;
-        this.clienteRepository = clienteRepository;
+        this.clienteRepository = ClientesConfig.config();
     }
 
     @Override
     public void save(Cliente cliente) {
         clienteValidator.checkRules(cliente);
-        this.clienteRepository = ClientesConfig.config();
         clienteRepository.save(cliente);
     }
 
    @Override
     public Cliente findByNome(String nome) {
-       this.clienteRepository = ClientesConfig.config();
         return clienteRepository.findByNome(nome);
     }
 
     @Override
     public void delete(String nome) {
-        this.clienteRepository = ClientesConfig.config();
         clienteRepository.delete(nome);
     }
 
     @Override
     public void update(Cliente cliente, Long id) {
-       this.clienteRepository = ClientesConfig.config();
         clienteRepository.update(cliente, id);
     }
 
     @Override
     public Cliente findById(Long idCliente) {
-        this.clienteRepository = ClientesConfig.config();
         return clienteRepository.findById(idCliente);
     }
 

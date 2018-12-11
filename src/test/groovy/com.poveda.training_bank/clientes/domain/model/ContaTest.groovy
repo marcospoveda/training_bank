@@ -27,8 +27,8 @@ class ContaTest extends Specification{
         where:
 
         contaId | numeroConta | agenciaConta |  saldoConta ||  id  || numero || agencia ||   saldo
-          "1"   |    1234     |    1011      |     1200    ||  "1" ||  1234  ||  1011   ||   1200
-          "2"   |    1410     |    1011      |     5000    ||  "2" ||  1410  ||  1011   ||   5000
+           1    |    1234     |    1011      |     1200    ||   1  ||  1234  ||  1011   ||   1200
+           2    |    1410     |    1011      |     5000    ||   2  ||  1410  ||  1011   ||   5000
 
 
 
